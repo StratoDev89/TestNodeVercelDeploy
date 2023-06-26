@@ -1,10 +1,11 @@
 const express = require("express");
 const cors = require("cors");
 const routerApi = require("./router.index");
+const config = require("./config")
 
 function bootstrap() {
   const app = express();
-  const port = process.env.port || 3000;
+  const port = config.port
 
   app.use(cors());
   app.use(express.json());
