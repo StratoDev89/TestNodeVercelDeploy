@@ -1,11 +1,12 @@
 const express = require("express");
 const cors = require("cors");
 const routerApi = require("./router.index");
-const config = require("./config")
+const config = require("./config");
+const database = require("./infrastructure/database");
 
-function bootstrap() {
+async function bootstrap() {
   const app = express();
-  const port = config.port
+  const port = config.port;
 
   app.use(cors());
   app.use(express.json());
@@ -19,6 +20,8 @@ function bootstrap() {
   });
 
   routerApi(app);
+
+  await database(config.dbUri);
 
   app.listen(port, () => {
     console.log(`Server running on port ${port}`);

@@ -2,7 +2,7 @@ require("dotenv").config();
 
 const config = {
   port: process.env.PORT,
-  connection: process.env.CONNECTION
+  dbUri: process.env.DB_URI
 };
 
 module.exports = config;
