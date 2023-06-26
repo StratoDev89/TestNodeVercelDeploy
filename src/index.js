@@ -12,7 +12,7 @@ function bootstrap() {
   app.use(express.urlencoded({ extended: false }));
 
   app.get("/", (req, res) => {
-    res.status(200).send({ message: "App running OK" });
+    res.status(200).send({ message: `App running OK on port ${port}` });
   });
   app.get("/home", (req, res) => {
     res.status(200).send({ message: "Home endpoint OK" });
