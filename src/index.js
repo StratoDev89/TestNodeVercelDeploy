@@ -1,5 +1,6 @@
 const express = require("express");
 const cors = require("cors");
+const userRouter = require("./routes");
 
 function bootstrap() {
   const app = express();
@@ -15,6 +16,8 @@ function bootstrap() {
   app.get("/home", (req, res) => {
     res.status(200).send({ message: "Home endpoint OK" });
   });
+
+  app.use(userRouter)
 
   app.listen(port, () => {
     console.log(`Server running on port ${port}`);
