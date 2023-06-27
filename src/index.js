@@ -20,8 +20,8 @@ async function bootstrap() {
   });
 
   routerApi(app);
-
-  await database(config.dbUri);
+  const { dbConnection, dbUser, dbPassword, dbHost, dbName } = config;
+  await database(dbConnection, dbUser, dbPassword, dbHost, dbName);
 
   app.listen(port, () => {
     console.log(`Server running on port ${port}`);
